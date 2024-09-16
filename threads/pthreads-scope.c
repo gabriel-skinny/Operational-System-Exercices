@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int sum;
+int sum = 10;
 void *summationThread(void *param);
 
 int main(int argc, char *argv[])
@@ -10,23 +10,15 @@ int main(int argc, char *argv[])
 
     pthread_t tid;
     pthread_attr_t attr;
-
-    if (argc != 2)
-    {
-        fprintf(stderr, "Non argument passed\n");
-        return -1;
-    }
-    if (atoi(argv[1]) < 0)
-    {
-        fprintf(stderr, "%d must be>= 0\n", atoi(argv[1]));
-        return -1;
-    }
+    int scope;
 
     // Informa o tamanho da stack e informações de schedule usando os parametros default;
     pthread_attr_init(&attr);
     pthread_create(&tid, &attr, summationThread, argv[1]);
 
-    printf("Thread created %d on main thread\n", tid);
+    phtread_attr
+
+        printf("Thread created %d on main thread\n", tid);
     pthread_join(tid, NULL);
 
     printf("sum = %d\n", sum);
